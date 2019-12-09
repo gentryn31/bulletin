@@ -1,0 +1,32 @@
+.icon_button {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    overflow: visible;
+}
+.icon_button:hover {
+    cursor: pointer;
+}
+
+.icon_button-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.icon_button-spotlight {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+    background-color: rgba(0,0,0,0);
+    transition: background-color 0.2s ease;
+}
+.icon_button:hover > .icon_button-spotlight,
+.icon_button-spotlight:focus {
+    outline: none;
+    background-color: rgba(0,0,0,0.2);
+}

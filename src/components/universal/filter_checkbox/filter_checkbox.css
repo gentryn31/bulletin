@@ -1,0 +1,24 @@
+.filter_checkbox {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.filter_checkbox-button {
+    margin-right: 22px;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    overflow: visible;
+}
+.filter_checkbox-button.checked {
+    color: var(--accent);
+}
+
+.filter_checkbox-label {
+    font-family: "Roboto", Helvetica, sans-serif;
+    font-size: 16px;
+    color: var(--text);
+}

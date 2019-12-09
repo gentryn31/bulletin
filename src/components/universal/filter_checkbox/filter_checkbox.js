@@ -7,7 +7,7 @@ class FilterCheckbox extends Component {
     render() {
         return (
             <div className='filter_checkbox'>
-                <IconButton className={this.props.isChecked ? 'filter_checkbox-checked' : ''} icon={this.props.isChecked ? 'check_box' : 'check_box_outline'} />
+                <IconButton className={this.props.isChecked ? 'filter_checkbox-button checked' : 'filter_checkbox-button'} icon={this.props.isChecked ? 'check_box' : 'check_box_outline_blank'} />
                 <p className='filter_checkbox-label'>{this.props.label}</p>
             </div>
         );

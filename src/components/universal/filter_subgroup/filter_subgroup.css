@@ -1,0 +1,10 @@
+.filter_subgroup {
+    margin-bottom: 42px;
+}
+
+.filter_subgroup-title {
+    font-family: "Roboto", Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-light);
+}

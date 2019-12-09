@@ -4,7 +4,7 @@ import CaseUpdateInbox from '../case_update_inbox/case_update_inbox.js';
 import './case_update_group.css'
 
 class CaseUpdateGroup extends Component {
-    genereateCaseUpdateInboxes = (data) => {
+    generateCaseUpdateInboxes = (data) => {
         return Object.values(data).map(c => { return <CaseUpdateInbox caseData={c} /> });
     }
 

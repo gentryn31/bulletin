@@ -1,0 +1,16 @@
+.filter_sidebar {
+    margin-top: 96px;
+    height: calc(100vh - 96px);
+    width: 416px;
+    background-color: white;
+    padding: 42px 36px;
+    border-right: 1px solid var(--divider);
+}
+
+.filter_sidebar-header {
+    font-family: "Roboto", Helvetica, sans-serif;
+    color: var(--text);
+    font-size: 24;
+    font-weight: 400;
+    margin-bottom: 24px;
+}

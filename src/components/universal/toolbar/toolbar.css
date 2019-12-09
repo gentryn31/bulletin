@@ -1,0 +1,38 @@
+.toolbar {
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 96px;
+    padding: 0 36px;
+    background-color: var(--primary);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.toolbar-back_button {
+    color: white;
+}
+
+.toolbar-title {
+    color: white;
+    font-family: "Roboto", Helvetica, sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    margin-left: 42px;
+    flex-grow: 1;
+}
+
+.toolbar-search_bar {
+    position: absolute;
+    top: 24px;
+    left: calc((100vw - 736px) / 2);
+}
+.toolbar-search_bar > input {
+    background-color: var(--primary-light);
+    color: white;
+}
+.toolbar-search_bar > input::placeholder {
+    color: white;
+}

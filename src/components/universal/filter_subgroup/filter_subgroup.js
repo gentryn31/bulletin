@@ -7,7 +7,7 @@ class FilterSubgroup extends Component {
     generateFilterOptions = (filters) => {
         return Object.values(filters).map(filter => {
             if (filter.type == 'checkbox') {
-                return <FilterCheckbox id={filter.id} label={filter.label} />;
+                return <FilterCheckbox id={filter.id} label={filter.label} isChecked={filter.isChecked} />;
             }
         });
     }

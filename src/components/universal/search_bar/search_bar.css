@@ -1,0 +1,22 @@
+.search_bar {
+    position: relative;
+}
+
+.search_bar-search_icon {
+    position: absolute;
+    top: 12px;
+    left: 24px;
+    margin: 0;
+    color: white;
+}
+
+.search_bar-input {
+    border-radius: 2px;
+    border: none;
+    padding: 12px 12px 12px 72px;
+    font-family: "Roboto", Helvetica, sans-serif;
+    font-size: 20;
+    font-weight: 400;
+    line-height: 26.7px;
+    width: 736px;
+}

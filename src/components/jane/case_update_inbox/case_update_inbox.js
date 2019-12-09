@@ -21,9 +21,9 @@ class CaseUpdateInbox extends Component {
         return (
             <div className='case_update_inbox'>
                 <div className='case_update_inbox-header'>
-                    <IconButton className={this.state.starred ? 'starred' : ''} icon={this.state.starred ? 'star_border' : 'star'} onClick={() => this.toggleStarred()} />
-                    <h3 className="case_update_inbox-case_number">Case #{this.props.caseData.case_number}</h3>
-                    <p className="case_update_inbox-date_info">{this.props.caseData.isOpen ? `Opened ${formatDate(this.props.caseData.openDate, true)}` : `Closed ${formatDate(this.props.caseData.closeDate, true)}`}</p>
+                    <IconButton className={this.state.starred ? 'starred' : ''} icon={this.state.starred ? 'star' : 'starred'} onClick={() => this.toggleStarred()} />
+                    <h3 className="case_update_inbox-case_number">Case #{this.props.caseData.id}</h3>
+                    <p className="case_update_inbox-date_info">{this.props.caseData.open ? `Opened ${formatDate(this.props.caseData.openDate, true)}` : `Closed ${formatDate(this.props.caseData.closeDate, true)}`}</p>
                 </div>
             </div>
         );
