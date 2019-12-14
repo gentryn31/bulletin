@@ -5,7 +5,7 @@ import './filter_sidebar.css'
 
 class FilterSidebar extends Component {
     generateFilterSubgroups = (contents) => {
-        return Object.values(contents).map(subgroup => { return <FilterSubgroup data={subgroup} /> });
+        return Object.values(contents).map(subgroup => { return <FilterSubgroup data={subgroup} onClick={(id) => this.props.onClick(id)} /> });
     }
 
     render() {

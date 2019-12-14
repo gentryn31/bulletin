@@ -7,6 +7,9 @@
 .icon_button:hover {
     cursor: pointer;
 }
+.icon_button:focus {
+    outline: none;
+}
 
 .icon_button-icon {
     position: absolute;
@@ -28,5 +31,5 @@
 .icon_button:hover > .icon_button-spotlight,
 .icon_button-spotlight:focus {
     outline: none;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.1);
 }

@@ -2,7 +2,9 @@
   --primary: #3F50B5;
   --primary-light: #757DE8;
   --accent: #FF5252;
+  --gold: #FFC107;
   --background: #FAFAFA;
+  --background-dark: #F4F4F4;
   --text: #212121;
   --text-light: #5E5E5E;
   --divider: #C8C8C8;
@@ -11,10 +13,13 @@
   box-sizing: border-box;
 }
 
+body {
+  overflow: hidden;
+}
+
 .page {
   height: 100vh;
   width: 100vw;
-  overflow-y: scroll;
-  overflow-x: none;
+  overflow: hidden;
   background-color: var(--background);
 }

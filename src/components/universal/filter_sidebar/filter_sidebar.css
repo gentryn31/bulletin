@@ -1,7 +1,6 @@
 .filter_sidebar {
-    margin-top: 96px;
-    height: calc(100vh - 96px);
-    width: 416px;
+    height: 100%;
+    width: 360px;
     background-color: white;
     padding: 42px 36px;
     border-right: 1px solid var(--divider);

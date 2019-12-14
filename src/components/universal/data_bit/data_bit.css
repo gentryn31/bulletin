@@ -1,0 +1,21 @@
+.data_bit {
+    grid-column: span 2;    
+}
+.data_bit.small {
+    grid-column: span 1;   
+}
+
+.data_bit-label {
+    font-family: "Roboto", Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-light);
+    margin-bottom: 6px;
+}
+
+.data_bit-data {
+    font-family: "Roboto", Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}

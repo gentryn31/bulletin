@@ -12,9 +12,15 @@
     width: 24px;
     height: 24px;
     overflow: visible;
+    color: var(--text);
+    transition: color 0.2s ease;
 }
 .filter_checkbox-button.checked {
     color: var(--accent);
+}
+.filter_checkbox-button.checked:hover > .icon_button-spotlight,
+.filter_checkbox-button.checked > .icon_button-spotlight:focus {
+    background-color: rgba(255, 82, 82, 0.1);
 }
 
 .filter_checkbox-label {
