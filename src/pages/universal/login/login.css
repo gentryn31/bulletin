@@ -1,0 +1,61 @@
+.login_page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.login_page-logo {
+    margin-bottom: 72px;
+}
+
+.login_page-input_label {
+    width: 346px;
+    text-align: left;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-family: "Roboto", Helvetica, sans-serif;
+}
+.login_page-input {
+    width: 346px;
+    margin-bottom: 24px;
+    height: 48px;
+    line-height: 48px;
+    font-size: 16px;
+    padding: 0 12px;
+    border: none;
+    outline: none;
+    background-color: rgba(0,0,0,0.05);
+    border-radius: 2px 2px 0 0;
+    border-bottom: 2px solid var(--text);
+    font-family: "Roboto", Helvetica, sans-serif;
+    transition: border-bottom 0.2s ease;
+}
+.login_page-input:focus {
+    border-bottom: 2px solid var(--accent);
+}
+
+.login_page-login_button {
+    height: 48px;
+    width: 346px;
+    margin-top: 24px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Roboto", Helvetica, sans-serif;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    color: white;
+    text-transform: uppercase;
+    background-color: var(--accent);
+    opacity: 1.0;
+    box-shadow: 0 0 5px rgba(0,0,0,0.15);
+    transition: opacity 0.2s ease, box-shadow 0.2s ease;
+}
+.login_page-login_button:hover,
+.login_page-login_button:focus {
+    opacity: 0.9;
+    box-shadow: 0 0 8px rgba(0,0,0,0.15);
+    cursor: pointer;
+}

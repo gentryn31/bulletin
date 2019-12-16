@@ -1,0 +1,28 @@
+.case_update_group {
+    margin-bottom: 36px;
+    transition: height 0.2s ease;
+}
+.case_update_group.hide {
+    height: 0;
+}
+
+.case_update_group-heading {
+    font-family: "Roboto", Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.case_update_group-empty_message {
+    width: 736px;
+    height: 72px;
+    background-color: var(--background);
+    border: 2px solid var(--divider);
+    font-family: "Roboto", Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-light);
+    line-height: 72px;
+    text-align: center;
+    border-radius: 2px;
+    margin-top: 12px;
+}

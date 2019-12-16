@@ -1,0 +1,11 @@
+.heatmap_page {
+    display: flex;
+    flex-direction: column;
+}
+
+#map {
+    height: calc(100vh - 96px);
+    width: 100vw;
+    margin-top: 96px;
+    border: none;
+}

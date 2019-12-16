@@ -12,7 +12,7 @@ class IconButton extends Component {
     }
 
     listenForEnterPress = e => {
-        if (e.key == "Enter") {
+        if (e.key == "Enter" && document.activeElement == document.getElementById(this.props.id)) {
             this.props.onClick();
         }
     }

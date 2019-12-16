@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Toolbar from '../../../components/universal/toolbar/toolbar.js';
 import FilterSidebar from '../../../components/universal/filter_sidebar/filter_sidebar.js';
 import CaseUpdateList from '../../../components/jane/case_update_list/case_update_list.js';
-import UpdateDetailsSidebar from '../../../components/universal/update_details_sidebar/update_details_sidebar.js';
+import UpdateDetailsSidebar from '../../../components/jane/update_details_sidebar/update_details_sidebar.js';
 
 import './updates.css';
 
@@ -85,7 +85,7 @@ class UpdatesPageJane extends Component {
         const closedCases = Object.values(this.props.data.cases).filter(c => { return !c.open });
         return (
             <div className="updates_page page">
-                <Toolbar hasBackButton hasSearch />
+                <Toolbar title="Updates" hasBackButton hasSearch onBackClicked={() => { this.props.history.push("/jane"); }} />
                 <div className="updates_page-body">
                     <FilterSidebar contents={this.state.filterViews} onClick={(id) => this.toggleFilter(id)} />
                     <CaseUpdateList

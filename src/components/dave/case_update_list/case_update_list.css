@@ -1,0 +1,6 @@
+.case_update_list {
+    overflow-y: scroll;
+    flex-grow: 1;
+    padding-top: 42px;
+    padding-left: calc(((100vw - 736px) / 2) - 360px);
+}

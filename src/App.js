@@ -3,12 +3,14 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import LoginPage from './pages/universal/login/login.js';
 import HomePageDave from './pages/dave/home/home.js';
+import NewCaseDave from './pages/dave/new_case/new_case.js';
 import UpdatesPageDave from './pages/dave/updates/updates.js';
 import TasksPageDave from './pages/dave/tasks/tasks.js';
 import HomePageJane from './pages/jane/home/home.js';
 import UpdatesPageJane from './pages/jane/updates/updates.js';
 import HeatMapJane from './pages/jane/heatmap/heatmap.js';
 import HomePageWade from './pages/wade/home/home.js';
+import NewUpdateWade from './pages/wade/new_update/new_update.js';
 import UpdatesPageWade from './pages/wade/updates/updates.js';
 import TasksPageWade from './pages/wade/tasks/tasks.js';
 
@@ -54,20 +56,38 @@ class App extends Component {
     this.setState({ data: data });
   }
 
+  login = (name) => {
+    let data = this.state.data;
+    let newUid = 0;
+    if (name == "wade") {
+      newUid = 572;
+    } else if (name == "dave") {
+      newUid = 1;
+    }
+
+    data.uid = newUid;
+
+    this.setState({ data: data });
+  }
+
   render() {
     return (
       <div className="App" >
         <Router>
-          <Route exact path="/" render={props => <LoginPage {...props} />} />
-          <Route exact path="/dave" render={props => <HomePageDave {...props} />} />
-          <Route exact path="/dave/updates" render={props => <UpdatesPageDave {...props} data={Object.values(this.state.data).length == 0 ? data : this.state.data} markAsRead={(update) => this.markAsRead(update)} toggleStarred={(id, isStarred) => this.toggleStarred(id, isStarred)} addReply={(message, update) => this.addReply(message, update)} />} />
-          <Route exact path="/dave/tasks" render={props => <TasksPageDave {...props} />} />
-          <Route exact path="/jane" render={props => <HomePageJane {...props} />} />
-          <Route exact path="/jane/updates" render={props => <UpdatesPageJane {...props} data={Object.values(this.state.data).length == 0 ? data : this.state.data} markAsRead={(update) => this.markAsRead(update)} toggleStarred={(id, isStarred) => this.toggleStarred(id, isStarred)} addReply={(message, update) => this.addReply(message, update)} />} />
-          <Route exact path="/jane/heatmap" render={props => <HeatMapJane {...props} />} />
-          <Route exact path="/wade" render={props => <HomePageWade {...props} />} />
-          <Route exact path="/wade/updates" render={props => <UpdatesPageWade {...props} data={Object.values(this.state.data).length == 0 ? data : this.state.data} markAsRead={(update) => this.markAsRead(update)} toggleStarred={(id, isStarred) => this.toggleStarred(id, isStarred)} addReply={(message, update) => this.addReply(message, update)} />} />
-          <Route exact path="/wade/tasks" render={props => <TasksPageWade {...props} />} />
+          <Switch>
+            <Route exact path="/" render={props => <LoginPage {...props} login={(name) => { this.login(name) }} />} />
+            <Route exact path="/dave" render={props => <HomePageDave {...props} />} />
+            <Route exact path="/dave/new-case" render={props => <NewCaseDave {...props} />} />
+            <Route exact path="/dave/updates" render={props => <UpdatesPageDave {...props} data={Object.values(this.state.data).length == 0 ? data : this.state.data} markAsRead={(update) => this.markAsRead(update)} toggleStarred={(id, isStarred) => this.toggleStarred(id, isStarred)} addReply={(message, update) => this.addReply(message, update)} />} />
+            <Route exact path="/dave/tasks" render={props => <TasksPageDave {...props} />} />
+            <Route exact path="/jane" render={props => <HomePageJane {...props} />} />
+            <Route exact path="/jane/updates" render={props => <UpdatesPageJane {...props} data={Object.values(this.state.data).length == 0 ? data : this.state.data} markAsRead={(update) => this.markAsRead(update)} toggleStarred={(id, isStarred) => this.toggleStarred(id, isStarred)} addReply={(message, update) => this.addReply(message, update)} />} />
+            <Route exact path="/jane/heatmap" render={props => <HeatMapJane {...props} />} />
+            <Route exact path="/wade" render={props => <HomePageWade {...props} />} />
+            <Route exact path="/wade/new-update" render={props => <NewUpdateWade {...props} />} />
+            <Route exact path="/wade/updates" render={props => <UpdatesPageWade {...props} data={Object.values(this.state.data).length == 0 ? data : this.state.data} markAsRead={(update) => this.markAsRead(update)} toggleStarred={(id, isStarred) => this.toggleStarred(id, isStarred)} addReply={(message, update) => this.addReply(message, update)} />} />
+            <Route exact path="/wade/tasks" render={props => <TasksPageWade {...props} />} />
+          </Switch>
         </Router>
       </div>
     );

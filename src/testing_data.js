@@ -10,6 +10,15 @@ export const data = {
             cases: [],
             starredCases: ["NSP190930", "NSP194670"]
         },
+        1: {
+            first_name: "Dave",
+            last_name: "Goodson",
+            posted_updates: [],
+            read_updates: [0, 1, 3, 4, 5, 6, 7, 8, 9, 10],
+            badge_number: 1,
+            cases: [],
+            starredCases: ["NSP194670", "NSP194386"]
+        },
         304: {
             first_name: "Joseph",
             last_name: "Mother",
@@ -51,7 +60,7 @@ export const data = {
             cases: ["NSP199075"]
         },
         572: {
-            first_name: "Barb",
+            first_name: "Wade",
             last_name: "Jenkins",
             posted_updates: [],
             read_updates: [0, 1, 4, 7, 8, 9],

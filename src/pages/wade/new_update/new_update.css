@@ -1,0 +1,5 @@
+.new_update_page-body {
+    margin-top: 96px;
+    height: calc(100vh - 96px);
+    width: 100vw;
+}

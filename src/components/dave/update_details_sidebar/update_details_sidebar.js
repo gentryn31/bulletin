@@ -1,35 +1,15 @@
 import React, { Component } from 'react';
-import IconButton from '../icon_button/icon_button.js';
-import DataBit from '../data_bit/data_bit.js';
+import IconButton from '../../universal/icon_button/icon_button.js';
+import DataBit from '../../universal/data_bit/data_bit.js';
 
 import './update_details_sidebar.css'
 import { formatDate } from '../../../functions.js';
 
 class UpdateDetailsSidebar extends Component {
-
-    componentDidMount() {
-        document.addEventListener('keypress', this.checkEnterPress);
-    }
-
-    componentWillUnmount() {
-        document.removeEventListener('keypress', this.checkEnterPress);
-    }
-
     componentWillReceiveProps(newProps) {
         if (newProps.isActive && newProps.isActive != this.props.isActive) {
             document.getElementById('update_details_sidebar').focus();
         }
-    }
-
-    checkEnterPress = (e) => {
-        if (document.activeElement == document.getElementById('update_details_sidebar-reply_box') && e.key == 'Enter') {
-            this.submitReply(e.target.value, this.props.activeUpdate);
-            e.target.value = '';
-        }
-    }
-
-    submitReply = (message, update) => {
-        this.props.addReply(message, update);
     }
 
     generateReplyViews = (replies) => {
@@ -64,7 +44,6 @@ class UpdateDetailsSidebar extends Component {
                         </div>
                     }
                 </div>
-                <input id='update_details_sidebar-reply_box' className='update_details_sidebar-reply_box' type='text' placeholder='Reply...' tabIndex={this.props.isActive ? 1 : -1} />
             </div>
         );
     }
