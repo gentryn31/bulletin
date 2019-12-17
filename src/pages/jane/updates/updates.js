@@ -11,6 +11,7 @@ class UpdatesPageJane extends Component {
         super();
 
         this.state = {
+            query: "",
             filterViews: {
                 "Cases": {
                     title: "Cases",
@@ -54,7 +55,7 @@ class UpdatesPageJane extends Component {
                 }
             },
             showUpdatePanel: false,
-            activeUpdate: { id: -1, caseId: "", officerId: 0, timestamp: -1, date: "", time: "", location: "", information: "", replies: [] }
+            activeUpdate: { id: -1, caseId: "", officerId: 0, timestamp: -1, date: "2019-01-01", time: "", location: "", information: "", comments: [] }
         }
     }
 
@@ -85,7 +86,7 @@ class UpdatesPageJane extends Component {
         const closedCases = Object.values(this.props.data.cases).filter(c => { return !c.open });
         return (
             <div className="updates_page page">
-                <Toolbar title="Updates" hasBackButton hasSearch onBackClicked={() => { this.props.history.push("/jane"); }} />
+                <Toolbar title="Updates" hasBackButton hasSearch search={(query) => this.setState({ query: query })} onBackClicked={() => { this.props.history.push("/jane"); }} />
                 <div className="updates_page-body">
                     <FilterSidebar contents={this.state.filterViews} onClick={(id) => this.toggleFilter(id)} />
                     <CaseUpdateList
@@ -101,9 +102,10 @@ class UpdatesPageJane extends Component {
                         showUnreadUpdates={this.state.filterViews["Updates"].filters["unread_updates"].isChecked}
                         officers={this.props.data.officers}
                         showUpdate={(update) => this.showUpdatePanel(update)}
-                        toggleStarred={(id, isStarred) => this.props.toggleStarred(id, isStarred)} />
+                        toggleStarred={(id, isStarred) => this.props.toggleStarred(id, isStarred)}
+                        query={this.state.query} />
                 </div>
-                <UpdateDetailsSidebar isActive={this.state.showUpdatePanel} activeUpdate={this.state.activeUpdate} officers={this.props.data.officers} onClose={(readUpdate) => this.closeSidebar(readUpdate)} addReply={(message, update) => this.props.addReply(message, update)} />
+                <UpdateDetailsSidebar query={this.state.query} isActive={this.state.showUpdatePanel} activeUpdate={this.state.activeUpdate} officers={this.props.data.officers} onClose={(readUpdate) => this.closeSidebar(readUpdate)} addReply={(message, update) => this.props.addReply(message, update)} />
             </div>
         );
     }

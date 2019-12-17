@@ -32,22 +32,27 @@ class CaseUpdateInbox extends Component {
         return officer.starredCases.includes(id);
     }
 
-    getNumNewUpdates = (officer, caseData) => {
-        let sum = 0;
-
-        caseData.updates.forEach(update => {
-            if (!officer.read_updates.includes(update)) {
-                sum++;
-            }
-        });
-
-        return sum;
+    getNumNewUpdates = (officer, caseId, updates) => {
+        return Object.values(updates).filter(update => { return update.caseId == caseId }).filter(update => { return !officer.read_updates.includes(update.id) }).length;
     }
 
-    generateUpdatePreviewList = (caseData, updates, officers, user) => {
+    updateMatchesQuery = (update, query) => {
+        query = query.toLowerCase();
+        const matchesCase = (`Case #${update.caseId}`).toLowerCase().search(query) > -1;
+        const matchesOfficerId = update.officerId.toString().toLowerCase().search(query) > -1;
+        const officerName = `${this.props.officers[update.officerId].first_name} ${this.props.officers[update.officerId].last_name}`;
+        const matchesOfficerName = officerName.toLowerCase().search(query) > -1;
+        const matchesLocation = update.location.toLowerCase().search(query) > -1;
+        const matchesInformation = update.information.toLowerCase().search(query) > -1;
+        const matchesComments = update.comments.filter(comment => { return comment.toLowerCase().search(query) > -1 }).length > 0;
+
+        return matchesCase || matchesOfficerId || matchesOfficerName || matchesLocation || matchesInformation || matchesComments;
+    }
+
+    generateUpdatePreviewList = (updates, officers, user, query) => {
         let views = [];
 
-        updates.forEach(update => {
+        updates.filter(update => { return this.updateMatchesQuery(update, query) }).forEach(update => {
             const officer = officers[update.officerId];
             const officerName = `${officer.first_name} ${officer.last_name}`;
             const isRead = user.read_updates.includes(update.id);
@@ -67,17 +72,37 @@ class CaseUpdateInbox extends Component {
         document.getElementById(`${this.props.caseData.id}-case_update_inbox`).style.height = `${newHeight}px`;
     }
 
+    checkForSearchMatches = (text, query) => {
+        text = text.toString();
+        const textSegments = text.toLowerCase().split(query.toLowerCase());
+        if (textSegments.length > 0) {
+            let views = [];
+            let insertionIndex = 0;
+            views.push(text.substring(insertionIndex, textSegments[0].length));
+            insertionIndex = textSegments[0].length;
+            for (let i = 1; i < textSegments.length; i++) {
+                views.push(<span className="highlight">{text.substring(insertionIndex, insertionIndex + query.length)}</span>);
+                insertionIndex += query.length;
+                views.push(text.substring(insertionIndex, insertionIndex + textSegments[i].length));
+                insertionIndex += textSegments[i].length;
+            }
+            return views;
+        }
+
+        return text;
+    }
+
     render() {
         return (
             <div id={`${this.props.caseData.id}-case_update_inbox`} className='case_update_inbox'>
                 <div className='case_update_inbox-header'>
                     <IconButton className={this.isStarred(this.props.officer, this.props.caseData.id) ? 'case_update_inbox-header-star_button starred' : 'case_update_inbox-header-star_button'} icon={this.isStarred(this.props.officer, this.props.caseData.id) ? 'star' : 'star_border'} onClick={() => this.toggleStarred()} />
-                    <h3 className="case_update_inbox-header-case_number">Case #{this.props.caseData.id}</h3>
+                    <h3 className="case_update_inbox-header-case_number">{this.checkForSearchMatches(`Case #${this.props.caseData.id}`, this.props.query)}</h3>
                     <p className="case_update_inbox-header-date_info">{this.props.caseData.open ? `Opened ${formatDate(this.props.caseData.openDate, true)}` : `Closed ${formatDate(this.props.caseData.closeDate, true)}`}</p>
-                    {this.getNumNewUpdates(this.props.officer, this.props.caseData) > 0 ? <Tag label={`${this.getNumNewUpdates(this.props.officer, this.props.caseData)} NEW`} /> : ''}
+                    {this.getNumNewUpdates(this.props.officer, this.props.caseData.id, this.props.updates) > 0 ? <Tag label={`${this.getNumNewUpdates(this.props.officer, this.props.caseData.id, this.props.updates)} NEW`} /> : ''}
                     <IconButton className={this.state.expanded ? 'case_update_inbox-header-dropdown_arrow active' : 'case_update_inbox-header-dropdown_arrow'} icon='keyboard_arrow_down' onClick={() => this.toggleExpanded(this.props.updates, this.props.caseData, this.props.officer)} />
                 </div>
-                {this.generateUpdatePreviewList(this.props.caseData, this.props.updates, this.props.officers, this.props.officer)}
+                {this.generateUpdatePreviewList(this.props.updates, this.props.officers, this.props.officer, this.props.query)}
             </div>
         );
     }

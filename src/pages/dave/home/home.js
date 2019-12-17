@@ -14,7 +14,6 @@ class HomePageJane extends Component {
                 </Toolbar>
                 <div className="home_page-body">
                     <h2 className="home_page-body-heading">Welcome, Dave</h2>
-                    <button className="home_page-body-button" onClick={() => { this.props.history.push("/dave/new-case") }}>Create New Case File</button>
                     <button className="home_page-body-button" onClick={() => { this.props.history.push("/dave/updates") }}>View Case Updates</button>
                     <button className="home_page-body-button" onClick={() => { this.props.history.push("/dave/tasks") }}>Assign Tasks</button>
                     <TipCard />

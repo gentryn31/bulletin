@@ -48,11 +48,11 @@ class App extends Component {
 
   addReply = (message, update) => {
     let data = this.state.data;
-    const reply = {
+    const comment = {
       message: message,
       officer: data.officers[data.uid]
     }
-    data.updates[update.id].replies.push(reply);
+    data.updates[update.id].comments.push(comment);
     this.setState({ data: data });
   }
 
@@ -70,6 +70,21 @@ class App extends Component {
     this.setState({ data: data });
   }
 
+  addUpdate = (update) => {
+    let newUpdates = this.state.data.updates;
+    newUpdates[update.id] = update;
+
+    let newOfficers = this.state.data.officers;
+    newOfficers[update.officerId].posted_updates.push(update.id);
+    newOfficers[update.officerId].read_updates.push(update.id);
+
+    let newCases = this.state.data.cases;
+    newCases[update.caseId].updates.push(update.id);
+
+    this.setState({ updates: newUpdates, officers: newOfficers, cases: newCases }, () => { alert("Update filed successfully.") });
+
+  }
+
   render() {
     return (
       <div className="App" >
@@ -84,7 +99,7 @@ class App extends Component {
             <Route exact path="/jane/updates" render={props => <UpdatesPageJane {...props} data={Object.values(this.state.data).length == 0 ? data : this.state.data} markAsRead={(update) => this.markAsRead(update)} toggleStarred={(id, isStarred) => this.toggleStarred(id, isStarred)} addReply={(message, update) => this.addReply(message, update)} />} />
             <Route exact path="/jane/heatmap" render={props => <HeatMapJane {...props} />} />
             <Route exact path="/wade" render={props => <HomePageWade {...props} />} />
-            <Route exact path="/wade/new-update" render={props => <NewUpdateWade {...props} />} />
+            <Route exact path="/wade/new-update" render={props => <NewUpdateWade {...props} uid={this.state.data.uid} cases={Object.values(data.cases).filter(c => { return data.officers[data.uid].cases.includes(c.id) })} onSubmit={(update) => { this.addUpdate(update) }} />} />
             <Route exact path="/wade/updates" render={props => <UpdatesPageWade {...props} data={Object.values(this.state.data).length == 0 ? data : this.state.data} markAsRead={(update) => this.markAsRead(update)} toggleStarred={(id, isStarred) => this.toggleStarred(id, isStarred)} addReply={(message, update) => this.addReply(message, update)} />} />
             <Route exact path="/wade/tasks" render={props => <TasksPageWade {...props} />} />
           </Switch>

@@ -4,3 +4,10 @@
     padding-top: 42px;
     padding-left: calc(((100vw - 736px) / 2) - 360px);
 }
+
+.case_update_list-search_text {
+    font-family: "Roboto", Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 24px;
+}

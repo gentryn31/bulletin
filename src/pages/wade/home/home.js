@@ -14,7 +14,6 @@ class HomePageWade extends Component {
                 </Toolbar>
                 <div className="home_page-body">
                     <h2 className="home_page-body-heading">Welcome, 349</h2>
-                    <button className="home_page-body-button" onClick={() => { this.props.history.push("/wade/new-update") }}>Add New Case Update</button>
                     <button className="home_page-body-button" onClick={() => { this.props.history.push("/wade/updates") }}>View Case Updates</button>
                     <button className="home_page-body-button" onClick={() => { this.props.history.push("/wade/tasks") }}>View Assigned Tasks</button>
                     <TipCard />
