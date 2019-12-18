@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import { formatDate } from '../../../functions.js';
+import IconButton from '../../universal/icon_button/icon_button.js';
 
-import './update_inbox_preview.css'
+import './task_inbox_preview.css'
 
-class UpdateInboxPreview extends Component {
+class TaskInboxPreview extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            expanded: false,
+            updates: [],
+            visibleUpdates: 0
+        }
+    }
     setEnterListener = () => {
         document.addEventListener('keypress', this.handleEnterPress);
     }
@@ -14,7 +24,7 @@ class UpdateInboxPreview extends Component {
 
     handleEnterPress = (e) => {
         if (e.key == 'Enter') {
-            this.props.showUpdate(this.props.update);
+            this.props.showTask(this.props.task);
         }
     }
 
@@ -40,14 +50,13 @@ class UpdateInboxPreview extends Component {
 
     render() {
         return (
-            <div className={`update_inbox_preview ${!this.props.isRead ? 'unread' : ''}`} onClick={() => this.props.showUpdate(this.props.update)} tabIndex={-1} >
-                <div className='update_inbox_preview-unread_indicator' />
-                <p className='update_inbox_preview-officer_name'>{this.checkForSearchMatches(`${this.props.officerName} (${this.props.update.officerId})`, this.props.query)}</p>
-                <p className='update_inbox_preview-date'>{this.checkForSearchMatches(formatDate(this.props.date), this.props.query)}</p>
-                <div className='update_inbox_preview-spotlight' tabIndex={this.props.visible ? 0 : -1} onFocus={() => this.setEnterListener()} onBlur={() => this.removeEnterListener()} />
+            <div className={`task_inbox_preview ${!this.props.isComplete ? 'incomplete' : ''}`} onClick={() => this.props.showTask(this.props.task)} tabIndex={-1} >
+                <IconButton className={this.state.expanded ? 'case_task_inbox-header-dropdown_arrow active' : 'case_task_inbox-header-dropdown_arrow'} icon={this.props.isComplete ? "check_box" : "check_box_outline_blank"} onClick={() => this.props.markComplete(this.props.task)} />
+                <p className='task_inbox_preview-officer_name'>{this.checkForSearchMatches(this.props.task.label, this.props.query)}</p>
+                <p className='task_inbox_preview-date'>{this.props.isComplete ? this.checkForSearchMatches(`Completed ${formatDate(this.props.completeDate)}`, this.props.query) : this.checkForSearchMatches(`Assigned ${formatDate(this.props.assignedDate)}`, this.props.query)}</p>
             </div>
         );
     }
 }
 
-export default UpdateInboxPreview;
+export default TaskInboxPreview;

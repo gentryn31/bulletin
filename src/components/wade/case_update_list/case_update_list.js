@@ -16,7 +16,8 @@ class CaseUpdateList extends Component {
                         officers={this.props.officers}
                         showReadUpdates={this.props.showReadUpdates}
                         showUnreadUpdates={this.props.showUnreadUpdates}
-                        showUpdate={(update) => this.props.showUpdate(update)} />
+                        showUpdate={(update) => this.props.showUpdate(update)}
+                        query={this.props.query} />
                     : ''}
                 {this.props.showOpenCases ?
                     <CaseUpdateGroup
@@ -27,7 +28,8 @@ class CaseUpdateList extends Component {
                         officers={this.props.officers}
                         showReadUpdates={this.props.showReadUpdates}
                         showUnreadUpdates={this.props.showUnreadUpdates}
-                        showUpdate={(update) => this.props.showUpdate(update)} />
+                        showUpdate={(update) => this.props.showUpdate(update)}
+                        query={this.props.query} />
                     : ''}
                 {this.props.showClosedCases ?
                     <CaseUpdateGroup
@@ -38,7 +40,8 @@ class CaseUpdateList extends Component {
                         officers={this.props.officers}
                         showReadUpdates={this.props.showReadUpdates}
                         showUnreadUpdates={this.props.showUnreadUpdates}
-                        showUpdate={(update) => this.props.showUpdate(update)} />
+                        showUpdate={(update) => this.props.showUpdate(update)}
+                        query={this.props.query} />
                     : ''}
             </div>
         );

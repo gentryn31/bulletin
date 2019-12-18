@@ -1,5 +1,5 @@
 export const data = {
-    uid: 0,
+    uid: 572,
     officers: {
         0: {
             first_name: "Jane",
@@ -63,6 +63,7 @@ export const data = {
             first_name: "Wade",
             last_name: "Jenkins",
             posted_updates: [],
+            read_tasks: [0, 1, 2, 3, 4, 5],
             read_updates: [0, 1, 4, 7, 8, 9],
             badge_number: 572,
             cases: ["NSP194670", "NSP190930", "NSP197438"]
@@ -122,20 +123,20 @@ export const data = {
         10: { id: 10, caseId: "NSP197438", officerId: 349, timestamp: 1572910000, date: "2019-10-20", time: "10:01", location: "Hastings, NE", information: "The suspect of the robbery was found and identified as Natin Gindry.", comments: [] },
     },
     cases: {
-        "NSP190930": { id: "NSP190930", openDate: "2019-09-27", type: "Assault", tasks: [2, 3], updates: [3], open: true },
+        "NSP190930": { id: "NSP190930", openDate: "2019-09-27", type: "Assault", tasks: [3, 4], updates: [3], open: true },
         "NSP199075": { id: "NSP199075", openDate: "2019-10-15", type: "Traffic", tasks: [], updates: [4], open: true },
-        "NSP197438": { id: "NSP197438", openDate: "2019-10-18", closeDate: "2019-12-08", type: "Robbery", tasks: [5, 6], updates: [8, 9, 10], open: false },
+        "NSP197438": { id: "NSP197438", openDate: "2019-10-18", closeDate: "2019-12-08", type: "Robbery", tasks: [0, 1], updates: [8, 9, 10], open: false },
         "NSP198888": { id: "NSP198888", openDate: "2019-10-23", type: "Lost Dog", tasks: [], updates: [7], open: true },
-        "NSP194670": { id: "NSP194670", openDate: "2019-10-31", type: "Robbery", tasks: [0, 1, 4], updates: [0, 1, 2], open: true },
+        "NSP194670": { id: "NSP194670", openDate: "2019-10-31", type: "Robbery", tasks: [2, 5, 6], updates: [0, 1, 2], open: true },
         "NSP194386": { id: "NSP194386", openDate: "2019-11-06", type: "Hit & Run", tasks: [], updates: [5, 6], open: true },
     },
     tasks: {
-        0: { id: 0, caseId: "NSP194670", officerId: 349, timestamp: 1573164236, label: "Get DNA Analysis Results", complete: false },
-        1: { id: 1, caseId: "NSP194670", officerId: 349, timestamp: 1572627540, label: "Interview Suspect: Tom Alderwald", complete: false },
-        2: { id: 2, caseId: "NSP190930", officerId: 349, timestamp: 1572275700, label: "File Warrant to Search Suspect's House: Reggie Wendel", complete: false },
-        3: { id: 3, caseId: "NSP190930", officerId: 349, timestamp: 1572275400, label: "Get Fingerprinting Results", complete: true },
-        4: { id: 4, caseId: "NSP194670", officerId: 349, timestamp: 1572228900, label: "Stakeout Suspect's Place of Work", complete: true },
-        5: { id: 5, caseId: "NSP197438", officerId: 349, timestamp: 1572225660, label: "Call Victim's Family", complete: true },
-        6: { id: 6, caseId: "NSP197438", officerId: 349, timestamp: 1572036180, label: "Complete ", complete: true },
+        0: { id: 0, caseId: "NSP197438", officerId: 572, assigned: "2019-10-28", label: "Complete report finalization", complete: true, completed: "2019-11-03" },
+        1: { id: 1, caseId: "NSP197438", officerId: 572, assigned: "2019-10-31", label: "Call Victim's Family", complete: true, completed: "2019-11-05" },
+        2: { id: 2, caseId: "NSP194670", officerId: 572, assigned: "2019-11-06", label: "Stakeout Suspect's Place of Work", complete: true, completed: "2019-11-08" },
+        3: { id: 3, caseId: "NSP190930", officerId: 572, assigned: "2019-11-12", label: "Get Fingerprinting Results", complete: true, completed: "2019-11-15" },
+        4: { id: 4, caseId: "NSP190930", officerId: 572, assigned: "2019-11-13", label: "File Warrant to Search Suspect's House: Reggie Wendel", complete: false, completed: "" },
+        5: { id: 5, caseId: "NSP194670", officerId: 572, assigned: "2019-11-16", label: "Interview Suspect: Tom Alderwald", complete: false, completed: "" },
+        6: { id: 6, caseId: "NSP194670", officerId: 572, assigned: "2019-12-01", label: "Get DNA Analysis Results", complete: false, completed: "" },
     },
 }

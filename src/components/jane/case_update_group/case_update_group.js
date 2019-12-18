@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { formatDate } from '../../../functions.js';
 import CaseUpdateInbox from '../case_update_inbox/case_update_inbox.js';
 
 import './case_update_group.css'
@@ -14,15 +15,18 @@ class CaseUpdateGroup extends Component {
 
     updateMatchesQuery = (update, query) => {
         query = query.toLowerCase();
-        const matchesCase = update.caseId.toLowerCase().search(query) > -1;
+        const caseNo = `Case #${update.caseId}`;
+        const matchesCase = caseNo.toLowerCase().search(query) > -1;
         const matchesOfficerId = update.officerId.toString().toLowerCase().search(query) > -1;
         const officerName = `${this.props.officers[update.officerId].first_name} ${this.props.officers[update.officerId].last_name}`;
         const matchesOfficerName = officerName.toLowerCase().search(query) > -1;
+        const matchesOfficerNameBadge = `${this.props.officers[update.officerId].first_name} ${this.props.officers[update.officerId].last_name} (${update.officerId})`.toLowerCase().search(query) > -1;
+        const matchesDate = formatDate(update.date, true).toLowerCase().search(query) > -1;
         const matchesLocation = update.location.toLowerCase().search(query) > -1;
         const matchesInformation = update.information.toLowerCase().search(query) > -1;
-        const matchesComments = update.comments.filter(comment => { return comment.toLowerCase().search(query) > -1 }).length > 0;
+        const matchesComments = update.comments.filter(comment => { return comment.message.toLowerCase().search(query) > -1 }).length > 0;
 
-        return matchesCase || matchesOfficerId || matchesOfficerName || matchesLocation || matchesInformation || matchesComments;
+        return matchesCase || matchesOfficerId || matchesOfficerName || matchesOfficerNameBadge || matchesDate || matchesLocation || matchesInformation || matchesComments;
     }
 
     generateCaseUpdateInboxes = (data) => {

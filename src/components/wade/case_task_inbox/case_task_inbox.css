@@ -1,0 +1,47 @@
+.case_task_inbox {
+    margin-top: 12px;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.15);
+    width: 736px;
+    height: 72px;
+    overflow: hidden;
+    transition: height 0.2s ease;
+}
+
+.case_task_inbox-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 72px;
+    padding: 0 24px;
+}
+
+.case_task_inbox-header-star_button.starred {
+    color: var(--gold);
+}
+.case_task_inbox-header-star_button.starred:hover > .icon_button-spotlight,
+.case_task_inbox-header-star_button.starred > .icon_button-spotlight:focus {
+    background-color: rgba(255, 193, 7, 0.1);
+}
+
+.case_task_inbox-header-case_number {
+    font-family: "Roboto", Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 24px;
+}
+
+.case_task_inbox-header-date_info {
+    font-family: "Roboto", Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    flex-grow: 1; 
+}
+
+.case_task_inbox-header-dropdown_arrow {
+    transform: rotate(0deg);
+    transition: transform 0.2s ease;
+}
+.case_task_inbox-header-dropdown_arrow.active {
+    transform: rotate(180deg);
+}

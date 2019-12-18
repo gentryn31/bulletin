@@ -85,6 +85,14 @@ class App extends Component {
 
   }
 
+  markComplete = (task) => {
+    let data = this.state.data;
+    data.tasks[task.id].complete = !data.tasks[task.id].complete;
+    const date = new Date();
+    data.tasks[task.id].completed = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate() + 1}`;
+    this.setState({ data: data });
+  }
+
   render() {
     return (
       <div className="App" >
@@ -100,8 +108,8 @@ class App extends Component {
             <Route exact path="/jane/heatmap" render={props => <HeatMapJane {...props} />} />
             <Route exact path="/wade" render={props => <HomePageWade {...props} />} />
             <Route exact path="/wade/new-update" render={props => <NewUpdateWade {...props} uid={this.state.data.uid} cases={Object.values(data.cases).filter(c => { return data.officers[data.uid].cases.includes(c.id) })} onSubmit={(update) => { this.addUpdate(update) }} />} />
-            <Route exact path="/wade/updates" render={props => <UpdatesPageWade {...props} data={Object.values(this.state.data).length == 0 ? data : this.state.data} markAsRead={(update) => this.markAsRead(update)} toggleStarred={(id, isStarred) => this.toggleStarred(id, isStarred)} addReply={(message, update) => this.addReply(message, update)} />} />
-            <Route exact path="/wade/tasks" render={props => <TasksPageWade {...props} />} />
+            <Route exact path="/wade/updates" render={props => <UpdatesPageWade {...props} data={Object.values(this.state.data).length == 0 ? data : this.state.data} markAsRead={(update) => this.markAsRead(update)} />} />
+            <Route exact path="/wade/tasks" render={props => <TasksPageWade {...props} data={Object.values(this.state.data).length == 0 ? data : this.state.data} markAsRead={(update) => this.markAsRead(update)} markComplete={(update) => this.markComplete(update)} />} />
           </Switch>
         </Router>
       </div>

@@ -13,9 +13,9 @@ class HomePageWade extends Component {
                     <button className="home_page-toolbar-logout_button" onClick={() => this.props.history.push('/')}>Logout</button>
                 </Toolbar>
                 <div className="home_page-body">
-                    <h2 className="home_page-body-heading">Welcome, 349</h2>
-                    <button className="home_page-body-button" onClick={() => { this.props.history.push("/wade/updates") }}>View Case Updates</button>
+                    <h2 className="home_page-body-heading">Welcome, 572</h2>
                     <button className="home_page-body-button" onClick={() => { this.props.history.push("/wade/tasks") }}>View Assigned Tasks</button>
+                    <button className="home_page-body-button" onClick={() => { this.props.history.push("/wade/updates") }}>View Case Updates</button>
                     <TipCard />
                 </div>
 

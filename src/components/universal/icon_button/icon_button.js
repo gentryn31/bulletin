@@ -4,15 +4,15 @@ import './icon_button.css'
 
 class IconButton extends Component {
     setEnterListener() {
-        document.addEventListener('keydown', this.listenForEnterPress);
+        document.addEventListener('keypress', this.listenForEnterPress);
     }
 
     removeEnterListener() {
-        document.removeEventListener('keydown', this.listenForEnterPress);
+        document.removeEventListener('keypress', this.listenForEnterPress);
     }
 
     listenForEnterPress = e => {
-        if (e.key == "Enter" && document.activeElement == document.getElementById(this.props.id)) {
+        if (e.key == "Enter") {
             this.props.onClick();
         }
     }

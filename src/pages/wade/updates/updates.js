@@ -107,7 +107,7 @@ class UpdatesPageWade extends Component {
                         query={this.state.query} />
                 </div>
                 <FloatingActionButton label="Add Case Update" icon="add" onClick={() => { this.props.history.push("/wade/new-update") }} />
-                <UpdateDetailsSidebar isActive={this.state.showUpdatePanel} activeUpdate={this.state.activeUpdate} officers={this.props.data.officers} onClose={(readUpdate) => this.closeSidebar(readUpdate)} addReply={(message, update) => this.props.addReply(message, update)} />
+                <UpdateDetailsSidebar query={this.state.query} isActive={this.state.showUpdatePanel} activeUpdate={this.state.activeUpdate} officers={this.props.data.officers} onClose={(readUpdate) => this.closeSidebar(readUpdate)} addReply={(message, update) => this.props.addReply(message, update)} />
             </div>
         );
     }

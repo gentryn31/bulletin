@@ -51,19 +51,19 @@ class UpdateDetailsSidebar extends Component {
                     <DataBit label='Officer' data={`${this.props.officers[this.props.activeUpdate.officerId].first_name} ${this.props.officers[this.props.activeUpdate.officerId].last_name}`} query={this.props.query} isSmall />
                     <DataBit label='Badge Number' data={this.props.activeUpdate.officerId} query={this.props.query} isSmall />
                     <DataBit label='Location' data={this.props.activeUpdate.location} query={this.props.query} />
-                    <DataBit label='Date' data={formatDate(this.props.activeUpdate.date, true)} isSmall />
+                    <DataBit label='Date' data={formatDate(this.props.activeUpdate.date, true)} query={this.props.query} isSmall />
                     <DataBit label='Time' data={this.props.activeUpdate.time} isSmall />
                     <DataBit label='Content' data={this.props.activeUpdate.information} query={this.props.query} />
                     {this.props.activeUpdate.comments.length == 0 ? '' :
                         <div className="update_details_sidebar-body-reply_container">
-                            <h3 className="data_bit-label">Replies</h3>
+                            <h3 className="data_bit-label">Comments</h3>
                             <div className="update_details_sidebar-body-reply_container-replies">
                                 {this.generateReplyViews(this.props.activeUpdate.comments)}
                             </div>
                         </div>
                     }
                 </div>
-                <input id='update_details_sidebar-reply_box' className='update_details_sidebar-reply_box' type='text' placeholder='Reply...' tabIndex={this.props.isActive ? 1 : -1} />
+                <input id='update_details_sidebar-reply_box' className='update_details_sidebar-reply_box' type='text' placeholder='Comment...' tabIndex={this.props.isActive ? 1 : -1} />
             </div>
         );
     }

@@ -42,7 +42,7 @@ class CaseUpdateInbox extends Component {
             const officer = officers[update.officerId];
             const officerName = `${officer.first_name} ${officer.last_name}`;
             const isRead = user.read_updates.includes(update.id);
-            views.unshift(<UpdateInboxPreview visible={this.state.expanded} update={update} officerName={officerName} date={update.date} isRead={isRead} showUpdate={(update) => this.props.showUpdate(update)} />);
+            views.unshift(<UpdateInboxPreview visible={this.state.expanded} update={update} officerName={officerName} date={update.date} isRead={isRead} showUpdate={(update) => this.props.showUpdate(update)} query={this.props.query} />);
         });
 
         if (this.state.expanded) {
@@ -58,12 +58,32 @@ class CaseUpdateInbox extends Component {
         document.getElementById(`${this.props.caseData.id}-case_update_inbox`).style.height = `${newHeight}px`;
     }
 
+    checkForSearchMatches = (text, query) => {
+        text = text.toString();
+        const textSegments = text.toLowerCase().split(query.toLowerCase());
+        if (textSegments.length > 0) {
+            let views = [];
+            let insertionIndex = 0;
+            views.push(text.substring(insertionIndex, textSegments[0].length));
+            insertionIndex = textSegments[0].length;
+            for (let i = 1; i < textSegments.length; i++) {
+                views.push(<span className="highlight">{text.substring(insertionIndex, insertionIndex + query.length)}</span>);
+                insertionIndex += query.length;
+                views.push(text.substring(insertionIndex, insertionIndex + textSegments[i].length));
+                insertionIndex += textSegments[i].length;
+            }
+            return views;
+        }
+
+        return text;
+    }
+
     render() {
         return (
             <div id={`${this.props.caseData.id}-case_update_inbox`} className='case_update_inbox'>
                 <div className='case_update_inbox-header'>
-                    <h3 className="case_update_inbox-header-case_number">Case #{this.props.caseData.id}</h3>
-                    <p className="case_update_inbox-header-date_info">{this.props.caseData.open ? `Opened ${formatDate(this.props.caseData.openDate, true)}` : `Closed ${formatDate(this.props.caseData.closeDate, true)}`}</p>
+                    <h3 className="case_update_inbox-header-case_number">{this.checkForSearchMatches(`Case #${this.props.caseData.id} `, this.props.query)}</h3>
+                    <p className="case_update_inbox-header-date_info">{this.props.caseData.open ? this.checkForSearchMatches(`Opened ${formatDate(this.props.caseData.openDate, true)} `, this.props.query) : this.checkForSearchMatches(`Closed ${formatDate(this.props.caseData.closeDate, true)} `, this.props.query)}</p>
                     {this.getNumNewUpdates(this.props.officer, this.props.caseData) > 0 ? <Tag label={`${this.getNumNewUpdates(this.props.officer, this.props.caseData)} NEW`} /> : ''}
                     <IconButton className={this.state.expanded ? 'case_update_inbox-header-dropdown_arrow active' : 'case_update_inbox-header-dropdown_arrow'} icon='keyboard_arrow_down' onClick={() => this.toggleExpanded(this.props.updates, this.props.caseData, this.props.officer)} />
                 </div>
