@@ -99,14 +99,14 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" render={props => <LoginPage {...props} login={(name) => { this.login(name) }} />} />
-            <Route exact path="/dave" render={props => <HomePageDave {...props} />} />
+            <Route exact path="/dave" render={props => <HomePageDave {...props} login={(name) => { this.login(name) }} />} />
             <Route exact path="/dave/new-case" render={props => <NewCaseDave {...props} />} />
             <Route exact path="/dave/updates" render={props => <UpdatesPageDave {...props} data={Object.values(this.state.data).length == 0 ? data : this.state.data} markAsRead={(update) => this.markAsRead(update)} toggleStarred={(id, isStarred) => this.toggleStarred(id, isStarred)} addReply={(message, update) => this.addReply(message, update)} />} />
             <Route exact path="/dave/tasks" render={props => <TasksPageDave {...props} />} />
-            <Route exact path="/jane" render={props => <HomePageJane {...props} />} />
+            <Route exact path="/jane" render={props => <HomePageJane {...props} login={(name) => { this.login(name) }} />} />
             <Route exact path="/jane/updates" render={props => <UpdatesPageJane {...props} data={Object.values(this.state.data).length == 0 ? data : this.state.data} markAsRead={(update) => this.markAsRead(update)} toggleStarred={(id, isStarred) => this.toggleStarred(id, isStarred)} addReply={(message, update) => this.addReply(message, update)} />} />
             <Route exact path="/jane/heatmap" render={props => <HeatMapJane {...props} />} />
-            <Route exact path="/wade" render={props => <HomePageWade {...props} />} />
+            <Route exact path="/wade" render={props => <HomePageWade {...props} login={(name) => { this.login(name) }} />} />
             <Route exact path="/wade/new-update" render={props => <NewUpdateWade {...props} uid={this.state.data.uid} cases={Object.values(data.cases).filter(c => { return data.officers[data.uid].cases.includes(c.id) })} onSubmit={(update) => { this.addUpdate(update) }} />} />
             <Route exact path="/wade/updates" render={props => <UpdatesPageWade {...props} data={Object.values(this.state.data).length == 0 ? data : this.state.data} markAsRead={(update) => this.markAsRead(update)} />} />
             <Route exact path="/wade/tasks" render={props => <TasksPageWade {...props} data={Object.values(this.state.data).length == 0 ? data : this.state.data} markAsRead={(update) => this.markAsRead(update)} markComplete={(update) => this.markComplete(update)} />} />

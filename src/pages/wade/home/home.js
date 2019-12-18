@@ -6,6 +6,10 @@ import TipCard from '../../../components/universal/tip_card/tip_card.js';
 import './home.css'
 
 class HomePageWade extends Component {
+    componentDidMount() {
+        this.props.login("wade");
+    }
+
     render() {
         return (
             <div className='home_page page'>
