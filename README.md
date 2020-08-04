@@ -5,6 +5,6 @@ Bulletin was developed in Fall 2019 as a part of UNL's Innovation Processes cour
 
 This project can be viewed at https://ip-group-7.web.app. You can log into the product with the following credentials:
 
-  Username: dave@nepatrol.gov 
+  Username: dave@nepatrol.gov <br />
   Password: password
 
