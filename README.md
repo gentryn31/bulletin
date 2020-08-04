@@ -3,5 +3,8 @@ Bulletin is a case management system developed in coordination with the Nebraska
 
 Bulletin was developed in Fall 2019 as a part of UNL's Innovation Processes course that is part of the Raikes School curriculum. Over the course of the semester, my group of team members and I developed a business model using the Lean Startup methodology. As a proof-of-concept for the business models, we developed this prototype and refined it with feedback from the Nebraska State Patrol.
 
-## Viewing the Project
-This project can be viewed at https://ip-group-7.web.app. 
+This project can be viewed at https://ip-group-7.web.app. You can log into the product with the following credentials:
+
+  Username: dave@nepatrol.gov 
+  Password: password
+
